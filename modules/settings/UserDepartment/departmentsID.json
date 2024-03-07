@@ -1,0 +1,18 @@
+{
+    "initialAddBtn" : "#workbenchPageContent > div > div > div > div > div > div > div > div > div > div > div.EmptyCanvasHint.withVerticalSection > div > div > button > div > div > div > i",
+    "rmapp" : "::-p-xpath(/html/body/div[4]/div/div/div/div[3]/div/div[3]/div[3]/section[2]/div/div/button/span/div/i)",
+    "settingsIcon" : "#Settings",
+    "deptClick" : "#DepartmentsID",
+
+
+    "addDeptClick" : "#addDept",
+    "deptType" : "#deptName",
+    "deptRem" : "#deptRemarks",
+    "deptTog" : "#deptToggle",
+    "saveClick" : "#saveBtn",
+    
+
+    "editDeptIcon" : "#editDeptIcon",
+    "editClick" : "#editDeptBtn"
+
+}
