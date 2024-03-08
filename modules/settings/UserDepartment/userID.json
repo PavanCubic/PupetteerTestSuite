@@ -3,6 +3,14 @@
     "rmapp" : "::-p-xpath(/html/body/div[4]/div/div/div/div[3]/div/div[3]/div[3]/section[2]/div/div/button/span/div/i)",
     "Settings" : "#Settings",
     "SettingsUserId" : "#SettingsUsersID",
+    
     "addCmdBtn" : "#addCommand",
-    "addBtn" : "#adduser"
+    "addBtn" : "#adduser",
+    "people" : "input[aria-label='People Picker']",
+    "deptDrop" : "#react-select-2-input",
+    "role" : "#react-select-3-input",
+    "addAuser" : "#addUserBtn",
+
+    "options":"#options",
+    "editBtn" : "#editBtn"
 }
