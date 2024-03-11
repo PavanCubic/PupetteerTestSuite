@@ -23,9 +23,9 @@ import * as fs from 'fs'
     await handleButton(IDS.deptClick, page);
 
     // Call the function to be tested
-    await AddDepartment(IDS, page, edit);
+    // await AddDepartment(IDS, page, edit);
     // await UpdateDepartment(IDS, page, edit);
-    // await validateEmpty(IDS, page);
+    await validateEmpty(IDS, page);
     // await validateDept(IDS, page, edit);
     // await validateExisting(IDS, page, edit);
 

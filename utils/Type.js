@@ -5,7 +5,7 @@ export default async function handleType(id, text, page, edit) {
     await setTimeout(1000)
     if (!edit) {
         await setTimeout(1000)
-        await page.type(id, text, { delay: 200 })
+        await page.type(id, text, { delay: 100 })
     }
     else {
         await page.click(id, { clickCount: 4 });

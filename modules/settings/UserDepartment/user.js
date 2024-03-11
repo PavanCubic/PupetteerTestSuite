@@ -40,9 +40,9 @@ import handleEnter from "../../../utils/Enter.js";
     await setTimeout(2000);
 
     // Functions to be called;
-    await AddUser(IDS, page, edit);
+    // await AddUser(IDS, page, edit);
     // await UpdateUser(IDS, page, edit);
-    // await validateEmpty(IDS, page);
+    await validateEmpty(IDS, page);
     // await validateRole(IDS, page, edit);
 
 })();

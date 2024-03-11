@@ -1,0 +1,22 @@
+{
+    "initaladdbtn" : "#workbenchPageContent > div > div > div > div > div > div > div > div > div > div > div.EmptyCanvasHint.withVerticalSection > div > div > button > div > div > div > i",
+    "rmapp" : "::-p-xpath(/html/body/div[4]/div/div/div/div[3]/div/div[3]/div[3]/section[2]/div/div/button/span/div/i)",
+    "Settings" : "#Settings",
+    "org" : "#OrganizationsID",
+    "OrgCmd" : "#CmdId",
+
+    "Name" : "#orgName",
+    "Reg" : "#orgNum",
+    "PanId" : "#orgPan",
+    "Phone" : "#orgPhone",
+    "Email" : "#orgEmail",
+    "Country" : "#react-select-2-input",
+    "State" : "#react-select-3-input",
+    "City" : "#react-select-4-input",
+    "Address" : "#orgAddress",
+
+    "options" : "#options",
+    "edit" : "#edit",
+    "delete" : "#delete",
+    "save" : "#save"
+}
