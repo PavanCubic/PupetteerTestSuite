@@ -2,13 +2,14 @@
     "initaladdbtn" : "#workbenchPageContent > div > div > div > div > div > div > div > div > div > div > div.EmptyCanvasHint.withVerticalSection > div > div > button > div > div > div > i",
     "rmapp" : "::-p-xpath(/html/body/div[4]/div/div/div/div[3]/div/div[3]/div[3]/section[2]/div/div/button/span/div/i)",
     "Settings" : "#Settings",
-    "JobClick" : "#JobTitleID",
+    "JobLocations" : "#JobLocationsID",
 
-    "addJobTitle" : "#addJobTitle",
-    "jobTitleName" : "#jobTitleName",
-    "jobTitleRemarks" : "#jobTitleRemarks",
-    "jobTitleToggle" : "#jobTitleToggle",
-    "jobTitleSave" : "#jobTitleSave",
+
+    "addLocation" : "#addLocation",
+    "locName" : "#locName",
+    "locRemarks" : "#locRemarks",
+    "locToggle" : "#locToggle",
+    "locSave" : "#locSave",
 
     "options" : "#options",
     "edit" : "#edit"

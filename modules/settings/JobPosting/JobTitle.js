@@ -1,6 +1,7 @@
 import launchAndGet from "../../../launch/index.js";
 import * as fs from 'fs'
 import handleButton from "../../../utils/ButtonClick.js";
+import handleType from "../../../utils/Type.js";
 
 
 (async () => {
@@ -21,4 +22,59 @@ import handleButton from "../../../utils/ButtonClick.js";
 
     await handleButton(IDS.JobClick, page);
 
+    // Functions
+    // await addJobTitle(IDS, page, edit);
+    // await editJobTitle(IDS, page, edit);
+    await validateEmpty(IDS, page);
+    await validateTitle(IDS, page, edit);
+
 })();
+
+const addJobTitle = async (IDS, page, edit) => {
+
+    await handleButton(IDS.addJobTitle, page);
+
+    await handleType(IDS.jobTitleName, 'QA - 1', page, edit = false);
+
+    await handleType(IDS.jobTitleRemarks, 'Nothing Much', page, edit = false);
+
+    // Toggle options
+    // await handleButton(IDS.jobTitleToggle, page);
+
+    await handleButton(IDS.jobTitleSave, page);
+
+}
+
+const editJobTitle = async(IDS, page, edit) => {
+
+    await handleButton(IDS.options, page);
+
+    await handleButton(IDS.edit, page);
+
+    await handleType(IDS.jobTitleName, 'Sales force test', page, edit=true);
+
+    await handleType(IDS.jobTitleRemarks, 'test edit', page, edit=true);
+
+    // Toggle options
+    // await handleButton(IDS.jobTitleToggle, page);
+
+    await handleButton(IDS.jobTitleSave, page);
+    
+}
+
+const validateEmpty = async(IDS, page) => {
+
+    await handleButton(IDS.addJobTitle, page);
+
+    await handleButton(IDS.jobTitleSave, page);
+}
+
+const validateTitle = async(IDS, page, edit) => {
+
+    await handleButton(IDS.addJobTitle, page);
+
+    await handleType(IDS.jobTitleRemarks, 'Something test', page, edit = false);
+
+    await handleButton(IDS.jobTitleSave, page);
+
+}

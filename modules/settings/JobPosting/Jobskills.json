@@ -2,13 +2,13 @@
     "initaladdbtn" : "#workbenchPageContent > div > div > div > div > div > div > div > div > div > div > div.EmptyCanvasHint.withVerticalSection > div > div > button > div > div > div > i",
     "rmapp" : "::-p-xpath(/html/body/div[4]/div/div/div/div[3]/div/div[3]/div[3]/section[2]/div/div/button/span/div/i)",
     "Settings" : "#Settings",
-    "JobClick" : "#JobTitleID",
+    "JobSkills" : "#JobSkillsID",
 
-    "addJobTitle" : "#addJobTitle",
-    "jobTitleName" : "#jobTitleName",
-    "jobTitleRemarks" : "#jobTitleRemarks",
-    "jobTitleToggle" : "#jobTitleToggle",
-    "jobTitleSave" : "#jobTitleSave",
+    "addCmdBtn" : "#addCmdBtn",
+    "skillName" : "#skillName",
+    "department" : "#react-select-2-input",
+    "skillToggle" : "#skillToggle",
+    "save" : "#save",
 
     "options" : "#options",
     "edit" : "#edit"
