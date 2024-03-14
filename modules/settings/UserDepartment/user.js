@@ -1,9 +1,8 @@
 import launchAndGet from "../../../launch/index.js";
 import handleButton from "../../../utils/ButtonClick.js";
-import handleType from "../../../utils/Type.js";
-import { setTimeout } from "timers/promises";
 import * as fs from 'fs'
 import handleEnter from "../../../utils/Enter.js";
+import { waitForSeconds } from "../../../utils/Time.js";
 
 (async () => {
 
@@ -37,13 +36,14 @@ import handleEnter from "../../../utils/Enter.js";
 
     await handleButton(IDS.SettingsUserId, page);
 
-    await setTimeout(2000);
+    await waitForSeconds(2);
 
     // Functions to be called;
     // await AddUser(IDS, page, edit);
     // await UpdateUser(IDS, page, edit);
-    await validateEmpty(IDS, page);
+    // await validateEmpty(IDS, page);
     // await validateRole(IDS, page, edit);
+    await deleteUser(IDS, page);
 
 })();
 
@@ -55,17 +55,17 @@ const AddUser = async (IDS, page) => {
 
     await handleButton(IDS.addBtn, page);
 
-    await handleEnter(IDS.people, 'shan cubic', page);
+    await handleEnter(IDS.people, 'sam dough', page);
 
-    await setTimeout(1000);
+    await waitForSeconds(1);
 
-    await handleEnter(IDS.deptDrop, 's', page);
+    await handleEnter(IDS.deptDrop, 'test', page);
 
-    await setTimeout(1000);
+    await waitForSeconds(1);
 
-    await handleEnter(IDS.role, 'recruiter', page);
+    await handleEnter(IDS.role, 'approver', page);
 
-    await setTimeout(1000);
+    await waitForSeconds(1);
 
     await handleButton(IDS.addAuser, page);
 }
@@ -73,19 +73,19 @@ const AddUser = async (IDS, page) => {
 // Update User
 const UpdateUser = async (IDS, page) => {
 
-    await handleButton(IDS.options, page);
+    // await handleButton(IDS.options, page);
 
     await handleButton(IDS.editBtn, page);
     
-    await setTimeout(3000);
+    await waitForSeconds(3);
 
     await handleEnter(IDS.deptDrop, 's', page);
 
-    await setTimeout(1000);
+    await waitForSeconds(1);
 
     await handleEnter(IDS.role, 'recruiter', page);
 
-    await setTimeout(1000);
+    await waitForSeconds(1);
 
     await handleButton(IDS.addAuser, page);
 }
@@ -111,11 +111,17 @@ const UpdateUser = async (IDS, page) => {
     
         await handleEnter(IDS.people, 'clm vikas', page);
     
-        await setTimeout(1000);
+        await waitForSeconds(1);
     
         await handleEnter(IDS.deptDrop, 's', page)
     
-        await setTimeout(1000);
+        await waitForSeconds(1);
     
         await handleButton(IDS.addAuser, page);
     } 
+
+    const deleteUser = async(IDS, page) => {
+
+        await handleButton(IDS.delete, page);
+        
+    }

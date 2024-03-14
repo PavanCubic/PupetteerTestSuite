@@ -12,5 +12,6 @@
     "addAuser" : "#addUserBtn",
 
     "options":"#options",
-    "editBtn" : "#editBtn"
+    "editBtn" : "#editBtn",
+    "delete" : "#deleteBtn"
 }

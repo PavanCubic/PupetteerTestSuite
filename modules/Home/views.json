@@ -1,0 +1,17 @@
+{
+    "initaladdbtn" : "#workbenchPageContent > div > div > div > div > div > div > div > div > div > div > div.EmptyCanvasHint.withVerticalSection > div > div > button > div > div > div > i",
+    "rmapp" : "::-p-xpath(/html/body/div[4]/div/div/div/div[3]/div/div[3]/div[3]/section[2]/div/div/button/span/div/i)",
+    
+    "editCols" : "#editColums",
+    
+    "reqDate" : "#RequestedDate",
+    "req" : "#Requester",
+    "exp" : "#Experience",
+    "JT" : "#JobTitle",
+    "positions" : "#Positions",
+    "loc" : "#Location",
+    "approver" : "#Approver",
+    "status" : "#Status",
+    "save" : "#save",
+    "close" : ""
+}

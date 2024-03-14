@@ -3,6 +3,8 @@ import launchAndGet from "../../../launch/index.js";
 import handleButton from "../../../utils/ButtonClick.js";
 import handleType from "../../../utils/Type.js";
 import * as fs from 'fs'
+import { waitForSeconds } from "../../../utils/Time.js";
+import backSpace from "../../../utils/Back.js";
 
 (async () => {
 
@@ -20,14 +22,17 @@ import * as fs from 'fs'
 
     await handleButton(IDS.settingsIcon, page);
 
+    await waitForSeconds(2);
+
     await handleButton(IDS.deptClick, page);
 
     // Call the function to be tested
     // await AddDepartment(IDS, page, edit);
     // await UpdateDepartment(IDS, page, edit);
-    await validateEmpty(IDS, page);
+    // await validateEmpty(IDS, page);
     // await validateDept(IDS, page, edit);
     // await validateExisting(IDS, page, edit);
+    await validateOnUpdate(IDS, page, edit);
 
 })();
 
@@ -48,11 +53,11 @@ const AddDepartment = async (IDS, page, edit) => {
 
 // Update Department
 const UpdateDepartment = async (IDS, page, edit) => {
-    await handleButton(IDS.editDeptIcon, page);
+    // await handleButton(IDS.editDeptIcon, page);
 
     await handleButton(IDS.editClick, page);
 
-    await handleType(IDS.deptType, ' IT', page, edit = true);
+    await handleType(IDS.deptType, 'IT', page, edit = true);
 
     await handleType(IDS.deptRem, 'IT Edit', page, edit = true);
 
@@ -85,9 +90,25 @@ const validateDept = async (IDS, page, edit) => {
 const validateExisting = async (IDS, page, edit) => {
     await handleButton(IDS.addDeptClick, page);
 
-    await handleType(IDS.deptType, 'spor Sports', page, edit = false);
+    await handleType(IDS.deptType, ' Sports', page, edit = false);
 
     await handleButton(IDS.saveClick, page);
+}
+
+const validateOnUpdate = async(IDS, page, edit) => {
+
+    await handleButton(IDS.editClick, page);
+
+    await backSpace(IDS.deptType, page);
+
+    await handleButton(IDS.saveClick, page);
+
+    await waitForSeconds(3);
+
+    await handleType(IDS.deptType, 'Test', page, edit=false);
+
+    await handleButton(IDS.saveClick, page);
+
 }
 
 

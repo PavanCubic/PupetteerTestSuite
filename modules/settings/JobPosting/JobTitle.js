@@ -2,6 +2,8 @@ import launchAndGet from "../../../launch/index.js";
 import * as fs from 'fs'
 import handleButton from "../../../utils/ButtonClick.js";
 import handleType from "../../../utils/Type.js";
+import backSpace from "../../../utils/Back.js";
+import { waitForSeconds } from "../../../utils/Time.js";
 
 
 (async () => {
@@ -22,11 +24,14 @@ import handleType from "../../../utils/Type.js";
 
     await handleButton(IDS.JobClick, page);
 
+    await waitForSeconds(2);
+
     // Functions
     // await addJobTitle(IDS, page, edit);
     // await editJobTitle(IDS, page, edit);
-    await validateEmpty(IDS, page);
-    await validateTitle(IDS, page, edit);
+    // await validateEmpty(IDS, page);
+    // await validateTitle(IDS, page, edit);
+    await validateOnUpdate(IDS, page, edit);
 
 })();
 
@@ -47,7 +52,7 @@ const addJobTitle = async (IDS, page, edit) => {
 
 const editJobTitle = async(IDS, page, edit) => {
 
-    await handleButton(IDS.options, page);
+    // await handleButton(IDS.options, page);
 
     await handleButton(IDS.edit, page);
 
@@ -74,6 +79,22 @@ const validateTitle = async(IDS, page, edit) => {
     await handleButton(IDS.addJobTitle, page);
 
     await handleType(IDS.jobTitleRemarks, 'Something test', page, edit = false);
+
+    await handleButton(IDS.jobTitleSave, page);
+
+}
+
+const validateOnUpdate = async(IDS, page, edit) => {
+
+    await handleButton(IDS.edit, page);
+
+    await backSpace(IDS.jobTitleName, page);
+
+    await handleButton(IDS.jobTitleSave, page);
+
+    await waitForSeconds(3);
+
+    await handleType(IDS.jobTitleName, 'Test Again', page, edit=false);
 
     await handleButton(IDS.jobTitleSave, page);
 

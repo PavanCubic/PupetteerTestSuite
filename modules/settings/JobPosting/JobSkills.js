@@ -4,6 +4,8 @@ import handleButton from "../../../utils/ButtonClick.js";
 import handleType from "../../../utils/Type.js";
 import handleEnter from "../../../utils/Enter.js";
 import { setTimeout } from "timers/promises";
+import { waitForSeconds } from "../../../utils/Time.js";
+import backSpace from "../../../utils/Back.js";
 
 (async () => {
 
@@ -23,13 +25,13 @@ import { setTimeout } from "timers/promises";
 
     await handleButton(IDS.JobSkills, page);
 
+    await waitForSeconds(2);
+
     // Functions
     // await addSkill(IDS, page, edit);
     // await updateSkill(IDS, page, edit);
     // await validateEmpty(IDS, page);
-
-    
-
+    // await validateUpdate(IDS, page, edit);
 
 })();
 
@@ -49,7 +51,7 @@ const addSkill = async (IDS, page, edit) => {
 
 const updateSkill = async (IDS, page, edit) => {
 
-    await handleButton(IDS.options, page);
+    // await handleButton(IDS.options, page);
 
     await handleButton(IDS.edit, page);
 
@@ -68,6 +70,23 @@ const validateEmpty = async (IDS, page) => {
     await handleButton(IDS.addCmdBtn, page);
 
     await setTimeout(1000);
+
+    await handleButton(IDS.save, page);
+}
+
+const validateUpdate = async(IDS, page, edit) => {
+
+    await handleButton(IDS.edit, page);
+
+    await backSpace(IDS.skillName, page);
+
+    await waitForSeconds(1);
+
+    await handleButton(IDS.save, page);
+
+    await waitForSeconds(3);
+
+    await handleType(IDS.skillName, 'Sharepoint', page, edit=false);
 
     await handleButton(IDS.save, page);
 }

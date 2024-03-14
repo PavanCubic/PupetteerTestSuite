@@ -2,6 +2,8 @@ import launchAndGet from "../../../launch/index.js";
 import handleButton from "../../../utils/ButtonClick.js";
 import * as fs from 'fs'
 import handleType from "../../../utils/Type.js";
+import { waitForSeconds } from "../../../utils/Time.js";
+import backSpace from "../../../utils/Back.js";
 
 (async () => {
 
@@ -21,11 +23,14 @@ import handleType from "../../../utils/Type.js";
 
     await handleButton(IDS.JobLocations, page);
 
+    await waitForSeconds(2);
+
     // Functions
     // await addLocations(IDS, page, edit);
     // await updateLocations(IDS, page, edit);
     // await validateEmpty(IDS, page);
-    await validateCity(IDS, page, edit);
+    // await validateCity(IDS, page, edit);
+    await validateOnUpdate(IDS, page, edit);
 
 })();
 
@@ -45,7 +50,7 @@ const addLocations = async (IDS, page, edit) => {
 
 const updateLocations = async (IDS, page, edit) => {
 
-    await handleButton(IDS.options, page);
+    // await handleButton(IDS.options, page);
 
     await handleButton(IDS.edit, page);
 
@@ -71,6 +76,21 @@ const validateCity = async(IDS, page, edit) => {
     await handleButton(IDS.addLocation, page);
 
     await handleType(IDS.locRemarks, 'remarks', page, edit=false);
+
+    await handleButton(IDS.locSave, page);
+}
+
+const validateOnUpdate = async(IDS, page, edit) => {
+
+    await handleButton(IDS.edit, page);
+
+    await backSpace(IDS.locName, page);
+
+    await handleButton(IDS.locSave, page);
+
+    await waitForSeconds(3);
+
+    await handleType(IDS.locName, 'edit', page, edit=false);
 
     await handleButton(IDS.locSave, page);
 }
