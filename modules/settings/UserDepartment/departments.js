@@ -8,17 +8,23 @@ import backSpace from "../../../utils/Back.js";
 
 (async () => {
 
-    const baseUrl = 'https://cubicdirect.sharepoint.com/sites/pavan/_layouts/15/workbench.aspx';
+    // console.log(process.argv[1]);
+
+    const globalIds = JSON.parse(fs.readFileSync('global_IDs.json', 'utf-8').trim());
+
+    const baseUrl = globalIds.site;
+
+    const page = await launchAndGet(baseUrl); 
 
     var edit = true;
 
-    const page = await launchAndGet(baseUrl);
-
     const IDS = JSON.parse(fs.readFileSync('modules/settings/UserDepartment/departmentsID.json','utf-8'));
 
-    await handleButton(IDS.initialAddBtn, page);
+    await handleButton(globalIds.initialAddBtn, page);
+    
+    await handleButton(globalIds.rmapp, page);
 
-    await handleButton(IDS.rmapp, page);
+    await waitForSeconds(2);
 
     await handleButton(IDS.settingsIcon, page);
 
@@ -31,8 +37,8 @@ import backSpace from "../../../utils/Back.js";
     // await UpdateDepartment(IDS, page, edit);
     // await validateEmpty(IDS, page);
     // await validateDept(IDS, page, edit);
-    // await validateExisting(IDS, page, edit);
-    await validateOnUpdate(IDS, page, edit);
+    await validateExisting(IDS, page, edit);
+    // await validateOnUpdate(IDS, page, edit);
 
 })();
 
@@ -90,14 +96,18 @@ const validateDept = async (IDS, page, edit) => {
 const validateExisting = async (IDS, page, edit) => {
     await handleButton(IDS.addDeptClick, page);
 
-    await handleType(IDS.deptType, ' Sports', page, edit = false);
+    await handleType(IDS.deptType, 'Sports', page, edit = false);
 
     await handleButton(IDS.saveClick, page);
 }
 
 const validateOnUpdate = async(IDS, page, edit) => {
 
+    await waitForSeconds(2);
+
     await handleButton(IDS.editClick, page);
+
+    await waitForSeconds(1);
 
     await backSpace(IDS.deptType, page);
 

@@ -1,0 +1,24 @@
+{
+    "Home":"...Home Files...",
+        "editHomeColumns" : "C:/Users/Pavan/Desktop/RMPuppet/modules/Home/columnViews.js",
+     
+    "Home-Requistion":"...Tmeplates...",
+        "newRequisition" : "C:/Users/Pavan/Desktop/RMPuppet/modules/Home/newRequisition.js",
+
+    "Settings" : "...Setting Files...",
+        "CustomFields" : "...Custom Fields...",
+            "AddFields" : "C:/Users/Pavan/Desktop/RMPuppet/modules/settings/CustomFields/AddFields.js",
+
+        "JobPosting" : "...JobPosting...",
+            "JobTitle" : "C:/Users/Pavan/Desktop/RMPuppet/modules/settings/JobPosting/JobTitle.js",
+            "JobLocation" : "C:/Users/Pavan/Desktop/RMPuppet/modules/settings/JobPosting/JobLocation.js",
+            "JobSkills" : "C:/Users/Pavan/Desktop/RMPuppet/modules/settings/JobPosting/JobSkills.js",
+
+        "User&Department" : "...Users and Departments...",
+            "Department" : "C:/Users/Pavan/Desktop/RMPuppet/modules/settings/UserDepartment/departments.js",
+            "Organisation" : "C:/Users/Pavan/Desktop/RMPuppet/modules/settings/UserDepartment/organisation.js",
+            "User" : "C:/Users/Pavan/Desktop/RMPuppet/modules/settings/UserDepartment/user.js",
+
+        "Requisition Template" : "...Requisition Template...",
+        "addRequisition" : "C:/Users/Pavan/Desktop/RMPuppet/modules/settings/RequisitionTemplates/JDTemplate.js"
+}

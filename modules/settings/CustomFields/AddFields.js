@@ -8,16 +8,23 @@ import { waitForSeconds } from "../../../utils/Time.js";
 
 (async () => {
 
-    const baseUrl = 'https://cubicdirect.sharepoint.com/sites/pavan/_layouts/15/workbench.aspx';
+    // console.log(process.argv[1]);
+
+    const globalIds = JSON.parse(fs.readFileSync('global_IDs.json', 'utf-8').trim());
+
+    const baseUrl = globalIds.site;
+
     const page = await launchAndGet(baseUrl);
 
     var edit = false;
 
     const IDS = JSON.parse(fs.readFileSync('modules/settings/CustomFields/addFields.json', 'utf-8'));
 
-    await handleButton(IDS.initaladdbtn, page);
+    await handleButton(globalIds.initialAddBtn, page);
+    
+    await handleButton(globalIds.rmapp, page);
 
-    await handleButton(IDS.rmapp, page);
+    await waitForSeconds(2);
 
     await handleButton(IDS.Settings, page);
 

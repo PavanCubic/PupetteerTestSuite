@@ -6,11 +6,13 @@ import { waitForSeconds } from "../../../utils/Time.js";
 
 (async () => {
 
-    const baseUrl = 'https://cubicdirect.sharepoint.com/sites/pavan/_layouts/15/workbench.aspx'
+    const globalIds = JSON.parse(fs.readFileSync('global_IDs.json', 'utf-8').trim());
 
-    var edit = true;
+    const baseUrl = globalIds.site;
 
     const page = await launchAndGet(baseUrl);
+
+    var edit = true;
 
     // const initaladdbtn = '#workbenchPageContent > div > div > div > div > div > div > div > div > div > div > div.EmptyCanvasHint.withVerticalSection > div > div > button > div > div > div > i'
 
@@ -28,9 +30,11 @@ import { waitForSeconds } from "../../../utils/Time.js";
 
     var IDS = JSON.parse(fs.readFileSync('modules/settings/UserDepartment/userID.json', 'utf-8'));
 
-    await handleButton(IDS.initaladdbtn, page);
+    await handleButton(globalIds.initialAddBtn, page);
+    
+    await handleButton(globalIds.rmapp, page);
 
-    await handleButton(IDS.rmapp, page);
+    await waitForSeconds(2);
 
     await handleButton(IDS.Settings, page);
 
@@ -39,11 +43,11 @@ import { waitForSeconds } from "../../../utils/Time.js";
     await waitForSeconds(2);
 
     // Functions to be called;
-    // await AddUser(IDS, page, edit);
+    await AddUser(IDS, page, edit);
     // await UpdateUser(IDS, page, edit);
     // await validateEmpty(IDS, page);
     // await validateRole(IDS, page, edit);
-    await deleteUser(IDS, page);
+    // await deleteUser(IDS, page);
 
 })();
 

@@ -6,15 +6,17 @@ import { waitForSeconds } from "../../utils/Time.js";
 
 (async() => {
     
-    const baseUrl = 'https://cubicdirect.sharepoint.com/sites/pavan/_layouts/15/workbench.aspx'
+    const globalIds = JSON.parse(fs.readFileSync('global_IDs.json', 'utf-8').trim());
+
+    const baseUrl = globalIds.site;
 
     const page = await launchAndGet(baseUrl);
 
     const IDS = JSON.parse(fs.readFileSync('modules/Draft/drafthome.json', 'utf-8'));
 
-    await handleButton(IDS.initaladdbtn, page);
-
-    await handleButton(IDS.rmapp, page);
+    await handleButton(globalIds.initialAddBtn, page);
+    
+    await handleButton(globalIds.rmapp, page);
 
     await waitForSeconds(2);
 

@@ -6,7 +6,11 @@ import { waitForSeconds } from "../../utils/Time.js";
 
 (async () => {
 
-    const baseUrl = 'https://cubicdirect.sharepoint.com/sites/pavan/_layouts/15/workbench.aspx';
+    // console.log(process.argv[1]);
+
+    const globalIds = JSON.parse(fs.readFileSync('global_IDs.json', 'utf-8').trim());
+
+    const baseUrl = globalIds.site;
 
     const page = await launchAndGet(baseUrl);
 
@@ -14,9 +18,11 @@ import { waitForSeconds } from "../../utils/Time.js";
 
     const IDS = JSON.parse(fs.readFileSync('modules/Home/views.json', 'utf-8'));
 
-    await handleButton(IDS.initaladdbtn, page);
+    await handleButton(globalIds.initialAddBtn, page);
+    
+    await handleButton(globalIds.rmapp, page);
 
-    await handleButton(IDS.rmapp, page);
+    await waitForSeconds(2);
 
     await handleButton(IDS.editCols, page);
 
@@ -34,9 +40,13 @@ import { waitForSeconds } from "../../utils/Time.js";
 
     await waitForSeconds(3);
 
+    await handleButton(IDS.editCols, page);
+
     await dragAndDrop(IDS.reqDate, IDS.status, page);
 
     await waitForSeconds(1);
+
+    await handleButton(IDS.save, page);
 
     // await handleMouse(IDS.req, page, 3000, 200);
 

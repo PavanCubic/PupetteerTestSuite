@@ -1,0 +1,26 @@
+{
+    "createReq" : "#AddNewRequisition",
+    "jobTitle" : "#jobtitle",
+    "department" : "#department",
+    "location" : "#location",
+    "positions" : "#numberofpositions",
+    "experience" : "#yearsofexperience",
+    "priority" : "#priority",
+    "jobType" : "#jobtype",
+    "minBudget" : "#minimumbudgetinput",
+    "maxBudget" : "#maximumbudgetinput",
+    "hiringStart" : "#hiringstartdate-label",
+    "hiringEnd" : "#hiringenddate-label",
+    "workMode" : "#workmode",
+    "template" : "#jobdescription",
+
+    "reqNext" : "#requisitionFormNext",
+    "appFormSelect" : "#applicantTemplateSelect",
+    "applicantNext" : "#applicantFormNext",
+
+    "hiringProcess" : "#hiringProcessSelectRequisition",
+    "hiringSubmit" : "#requisitionSubmit",
+    "enterRemarks" : "#requisitionSubmitRemarks",
+    "cancel" : "#requisitionFinalSubmitCancel",
+    "submit" : "#requisitionFinalSubmit"
+}
