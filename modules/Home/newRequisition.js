@@ -30,6 +30,8 @@ import handleDrop from "../../utils/dropDown.js";
 
   await handleButton(IDS.createReq, page);
 
+  await waitForSeconds(2);
+
   for (let rowIndex = 3; rowIndex <= worksheet.rowCount; rowIndex++) {
     const row = worksheet.getRow(rowIndex);
     const data = {
@@ -44,15 +46,15 @@ import handleDrop from "../../utils/dropDown.js";
       maxBudget: row.getCell(9)?.value.toString(),
       workMode: row.getCell(10).value,
       template: row.getCell(11).value,
+      applicantForm : row.getCell(12).value,
+      hiringForm : row.getCell(14).value
     };
 
     if (rowIndex > 3) {
-      await waitForSeconds(5);
+      await waitForSeconds(3);
 
       await handleButton(IDS.createReq, page);
     }
-
-    await waitForSeconds(2);
 
     await handleEnter(IDS.jobTitle, data.jobTitle, page);
 
@@ -74,27 +76,31 @@ import handleDrop from "../../utils/dropDown.js";
 
     await handleDrop(IDS.hiringStart, page, 0);
 
-    await handleDrop(IDS.hiringEnd, page, 3);
+    await handleDrop(IDS.hiringEnd, page, 2);
 
     await handleEnter(IDS.workMode, data.workMode, page);
 
     await handleEnter(IDS.template, data.template, page);
 
-    await waitForSeconds(2);
+    await waitForSeconds(1);
 
     await handleButton(IDS.reqNext, page);
 
-    await handleEnter(IDS.appFormSelect, "applicant form 1", page);
+    await handleEnter(IDS.appFormSelect, data.applicantForm, page);
 
     await waitForSeconds(1);
 
     await handleButton(IDS.applicantNext, page);
 
-    await waitForSeconds(2);
+    await waitForSeconds(1);
+
+    await handleEnter(IDS.hiringProcess, data.hiringForm, page);
+
+    await waitForSeconds(1);
 
     await handleButton(IDS.hiringSubmit, page);
 
-    await waitForSeconds(2);
+    await waitForSeconds(0.5);
 
     await handleType(
       IDS.enterRemarks,
@@ -105,6 +111,6 @@ import handleDrop from "../../utils/dropDown.js";
 
     await handleButton(IDS.submit, page);
 
-    await waitForSeconds(3);
+    await waitForSeconds(2);
   }
 })();
