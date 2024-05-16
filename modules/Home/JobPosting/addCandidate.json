@@ -1,0 +1,9 @@
+{
+    "add":"#addCandidate",
+    "addCandidate" : "#addACandidate",
+    "inputField" : "#file-input",
+    "candidateName" : "#firstname",
+    "phone" : "#phonenumber",
+    "email" : "#emailaddress",
+    "submit" : "#candidateSubmit"
+}

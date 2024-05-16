@@ -1,4 +1,5 @@
 import * as fs from "fs";
+import ExcelJS from "exceljs";
 import launchAndGet from "../../launch/index.js";
 import handleButton from "../../utils/ButtonClick.js";
 import { waitForSeconds } from "../../utils/Time.js";
@@ -11,6 +12,8 @@ import handleDrop from "../../utils/dropDown.js";
 
   const baseUrl = globalIds.site;
 
+  let i = 1;
+
   const page = await launchAndGet(baseUrl);
 
   await handleButton(globalIds.initialAddBtn, page);
@@ -19,59 +22,67 @@ import handleDrop from "../../utils/dropDown.js";
 
   const IDS = JSON.parse(fs.readFileSync("modules/Home/newReq.json", "utf-8"));
 
+  const workbook = new ExcelJS.Workbook();
+
+  await workbook.xlsx.readFile("Excels/Requisition.xlsx");
+
+  const worksheet = workbook.getWorksheet(2);
+
   await handleButton(IDS.createReq, page);
 
   await waitForSeconds(2);
 
-  // for (let rowIndex = 3; rowIndex <= 3; rowIndex++) {
-  //   const row = worksheet.getRow(rowIndex);
-  //   const data = {
-  //     position: row.getCell(4).value.toString(),
-  //     minBudget: row.getCell(8).value.toString(),
-  //     maxBudget: row.getCell(9).value.toString(),
-  //   };
-  // }
+  for (let rowIndex = 3; rowIndex <= worksheet.rowCount; rowIndex++) {
 
-  for (let i = 0; i < 5; i++) {
-    if (i > 0) {
+    const row = worksheet.getRow(rowIndex);
+
+    const formData = {
+      requisitionForm: row.getCell(1).value,
+      applicantForm: row.getCell(2).value,
+      hiringProcessForm: row.getCell(3).value,
+    };
+
+    if (rowIndex > 3) {
       await waitForSeconds(3);
 
       await handleButton(IDS.createReq, page);
     }
 
-    await waitForSeconds(2);
+    await waitForSeconds(1);
 
-    await handleDrop(IDS.jobTitle, page, i+2-1);
+    await handleEnter(IDS.requisitionForm, formData.requisitionForm, page);
+
+    await handleDrop(IDS.jobTitle, page, i+1);
 
     await handleDrop(IDS.department, page, i);
 
     await handleDrop(IDS.location, page, i);
 
-    await handleType(IDS.positions, i+5, page, false);
+    await handleType(IDS.positions, "10", page, false);
 
-    await handleDrop(IDS.experience, page, i + 2 - 1);
+    await handleDrop(IDS.experience, page, i);
 
-    await handleDrop(IDS.priority, page, 1);
+    await handleDrop(IDS.priority, page, i);
 
-    await handleDrop(IDS.jobType, page, 2);
+    await handleDrop(IDS.jobType, page, i);
 
-    await handleType(IDS.minBudget, "11", page, false);
+    await handleType(IDS.minBudget, "10", page, false);
 
-    await handleType(IDS.maxBudget, "12", page, false);
+    await handleType(IDS.maxBudget, "15", page, false);
 
     await handleDrop(IDS.hiringStart, page, 0);
 
-    await handleDrop(IDS.hiringEnd, page, i + 2 - 1);
+    await handleDrop(IDS.hiringEnd, page, i);
 
-    await handleDrop(IDS.workMode, page, 2);
+    await handleDrop(IDS.workMode, page, i);
 
     await handleDrop(IDS.template, page, i);
 
-    await waitForSeconds(2);
+    await waitForSeconds(1);
 
     await handleButton(IDS.reqNext, page);
 
-    await handleDrop(IDS.appFormSelect, page, 0);
+    await handleEnter(IDS.appFormSelect, formData.applicantForm, page);
 
     await waitForSeconds(1);
 
@@ -79,19 +90,21 @@ import handleDrop from "../../utils/dropDown.js";
 
     await waitForSeconds(1);
 
-    if (i % 2 == 0) {
-      await handleDrop(IDS.hiringProcess, page, 1);
-    } else {
-      await handleDrop(IDS.hiringProcess, page, 0);
-    }
+    await handleEnter(IDS.hiringProcess, formData.hiringProcessForm, page);
 
     await waitForSeconds(1);
 
     await handleButton(IDS.hiringSubmit, page);
 
-    await waitForSeconds(2);
+    await waitForSeconds(1);
 
-    await handleType(IDS.enterRemarks, `New Requisition ${i + 1}`, page, false);
+    await handleType(IDS.enterRemarks, `New Requisition ${i}`, page, false);
+
+    i++;
+
+    if(i>3){
+      i=1;
+    }
 
     await handleButton(IDS.submit, page);
 

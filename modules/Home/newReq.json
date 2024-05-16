@@ -1,5 +1,6 @@
 {
     "createReq" : "#AddNewRequisition",
+    "requisitionForm" : "#requisitionTemplateSelect",
     "jobTitle" : "#jobtitle",
     "department" : "#department",
     "location" : "#location",
